@@ -9,20 +9,10 @@ post '/login' do
 end
 
 get '/logout' do
-  session.clear
+  session[:user_id] = nil
+  current_user = nil
   redirect '/'
 end
 
-get '/register' do
-  erb :'users/new'
-end
 
-post '/register' do
-  user = User.new(params[:user])
-  if user.save
-    redirect '/'
-  else
-    erb :'users/new'
-  end
-end
 
