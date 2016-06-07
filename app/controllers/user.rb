@@ -3,7 +3,11 @@ get '/users' do
 end
 
 get '/users/new' do
+  if request.xhr?
+    erb:'users/new', layout: false
+  else
   erb :'users/new'
+  end
 end
 
 post '/users' do
