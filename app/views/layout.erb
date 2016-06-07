@@ -31,19 +31,24 @@
   <nav class="navbar navbar-default" id="header" >
     <div class="container-fluid"><center>
       <% if current_user %>
-        <a href="/">Home</a> |
-        <a href='/logout'>Logout</a> |
-      Signed in as: <%= current_user.username %>
+      <a href="/">Home</a> |
+      Signed in as: <%= current_user.username %> |
+      <a href='/logout'>Logout</a>
       <% else %>
-        <div class="input-group">
-        <form action="/login" method="post">  <a href="/">Home</a> | <a href="/register" > Register</a> &nbsp;&nbsp;&nbsp;
-          <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;
-          <input type="text" name="username" placeholder="Username">&nbsp;&nbsp;&nbsp;
-          <i class="glyphicon glyphicon-lock"></i>&nbsp;&nbsp;&nbsp;
-          <input type="password" name="password" placeholder="Password">&nbsp;&nbsp;&nbsp;
-        <button type="submit" class="btn btn-primary">Login</button></div></form>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/users/new" > Register</a></li>
+      </ul>
+      <form id="signin" class="navbar-form navbar-right" role="form" action="/login" method="post">
+       <div class="input-group">
+        <i class="glyphicon glyphicon-user"></i>&nbsp;
+        <input type="text" name="username" placeholder="Username">&nbsp;
+        <i class="glyphicon glyphicon-lock"></i>&nbsp;
+        <input type="password" name="password" placeholder="Password">&nbsp;
+        <button type="submit" class="btn btn-primary">Login</button></div>
+      </form>
       <% end %>
-    </center></div></nav>
+  </center></div></nav>
 
    <%= yield %>
  </div>

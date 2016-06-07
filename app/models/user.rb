@@ -14,12 +14,7 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  # def create
-  #   @user = User.new(params[:user])
-  #   @user.password = params[:password]
-  #   @user.save!
-  # end
-
+# Switch to email or username depending on what's unique
   def self.authenticate(username, password)
     @user = User.find_by(username: username)
     if @user && @user.password == password
